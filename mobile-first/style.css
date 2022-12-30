@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Palanquin', sans-serif;
+    font-family: 'Staatliches', cursive;
+}
+:root{
+    font-size: 62.5%;
+    /*fontes*/
+    --font-Palanquin: 'Palanquin', sans-serif;
+    --font-Staatliches: 'Staatliches', cursive;
+
+    /*cores*/
+    --bg-body: hsl(0, 0%, 90%);
+    --bg-header: hsl(218, 17%, 62%);
+    --bg-h2-header: hsl(275, 18%, 79%);
+    --bg-h3-card: hsl(312, 91%, 96%);
+
+    /*cores fontes*/
+    --fc-h2: hsl(0, 0%, 100%);
+    --fc-text: hsl(274, 84%, 12%);
+    --fc-h3-card: hsl(232, 17%, 35%);
+}
+img{
+    width: 100%;
+}
+body{
+    background-color: var(--bg-body);
+}
+
+header{
+    background-color: var(--bg-header);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo{
+    margin: 32px 0;
+    width: 137px;
+    height: 137px;
+}
+.title{
+    width: 100%;
+    background-color: var(--bg-h2-header);
+    text-align: center;
+    padding: 8px;
+}
+.title h1{
+    font-family: var(--font-Staatliches);
+    font-style: normal;
+    font-size: 4rem;
+    line-height: 3.4rem;
+    letter-spacing: 0.5rem;
+    color: #FFFFFF;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+.text-desktop{
+    display: none;
+}
+.text p{
+    font-family: var(--font-Palanquin);
+    font-style: normal;
+    font-size: 2rem;
+    line-height: 1.5rem;
+    text-align: center;
+    padding: 1.4rem 1rem 0;
+    color: var(--fc-text);
+    margin: 0 auto;
+}
+
+
+
+.cards{
+    display: grid;
+    gap: 3.2rem;
+    padding: 6.3rem 3.2rem 6rem;
+}
+.card{
+    position: relative;
+    animation: downtop 400ms 200ms forwards;
+    opacity: 0;
+    transition: all 1s;
+}
+.card h3{
+    font-family: var(--font-Staatliches);
+    background-color: var(--bg-h3-card);
+    color: var(--fc-h3-card);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 3.4rem;
+    letter-spacing: 0.5rem;
+    border-radius: 2rem;
+    padding: 0.5rem 2.4rem;
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    opacity: 0;
+    animation: topdown 400ms 400ms forwards;
+    transition: all 1s;
+}
+.card img{
+    border-radius: 2rem;
+    
+}
+.footer p{
+    text-transform: lowercase;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-size: 1.4rem;
+    line-height: 2.8rem;
+    text-align: center;
+    color: #4A4E69;        
+}
+
+@media (min-width:730px){
+    .page{
+        display: flex;
+    }
+    header{
+        width: 100%;
+        max-width: 320px;
+        padding-bottom: 125px;
+    }
+    .text-desktop{
+        display: block;
+        text-align: center;
+        width: 275px;
+        margin: 32px 0;
+    }
+    .text-desktop p{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-size: 16px;
+        line-height: 20px;
+        color: #FFFFFF;
+    }
+
+    .text{
+        display: none;
+    }
+    .cards{
+        padding: 6.4rem 3.2rem;
+        grid-template-areas: 
+        'a b'
+        'd b'
+        'd c'
+        'e f'
+        'e f';
+    }
+    .card h3{    
+        font-size: 1.7rem;
+        line-height: 3.1rem;
+        letter-spacing: 0.5rem;
+        border-radius: 1.7rem;
+        padding: 0.2rem 2.1rem;
+        position: absolute;
+        top: 1.6rem;
+        right: 1.6rem;
+    }
+    .card:nth-child(1){
+        grid-area: a;
+    }
+    .card:nth-child(2){
+        grid-area: b;
+    }
+    .card:nth-child(3){
+        grid-area: c;
+    }
+    .card:nth-child(4){
+        grid-area: d;
+    }
+    .card:nth-child(5){
+        grid-area: e;
+    }
+    .card:nth-child(6){
+        grid-area: f;
+    }
+}
+
+
+@media (min-width:930px){
+    .cards{
+        padding: 3.4rem 3.2rem;
+        grid-template-areas: 
+        'a b c'
+        'd b e'
+        'd f e';
+    }
+    .card:nth-child(1){
+        grid-area: a;
+    }
+    .card:nth-child(2){
+        grid-area: b;
+    }
+    .card:nth-child(3){
+        grid-area: c;
+    }
+    .card:nth-child(4){
+        grid-area: d;
+    }
+    .card:nth-child(5){
+        grid-area: f;
+    }
+    .card:nth-child(6){
+        grid-area: e;
+    }
+}
+
+/*animações*/
+@keyframes topdown{
+    0%{
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes downtop{
+    0%{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
